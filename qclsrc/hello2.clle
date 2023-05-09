@@ -1,0 +1,25 @@
+/*----------------------------------------------------------------------------*/
+/* Hello World CL 2 - HELLO2C */
+/*----------------------------------------------------------------------------*/
+             PGM
+
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERRORS))
+
+/*----------------------------------------------------------------------------*/
+/* Send message to command lline */
+/*----------------------------------------------------------------------------*/
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('Hello +
+                          World CL 2') MSGTYPE(*COMP)
+
+             RETURN
+
+/*----------------------------------------------------------------------------*/
+/* HANDLE ERRORS     */
+/*----------------------------------------------------------------------------*/
+ERRORS:
+
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('Error +
+                          occurred during HELLOC process. PPlease +
+                          check the joblog') MSGTYPE(*ESCAPE)
+
+             ENDPGM
